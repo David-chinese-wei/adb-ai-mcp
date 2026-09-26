@@ -26,6 +26,26 @@ import { fileURLToPath } from "node:url";
 import { PNG } from "pngjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/**
+ * 最小 .env 支持：读取项目根目录下的 .env（KEY=VALUE）。
+ * 已存在的环境变量优先，.env 只作兜底，方便本地调试与「换台电脑直接跑」。
+ */
+function loadDotEnv() {
+  try {
+    const p = path.join(__dirname, ".env");
+    if (!fs.existsSync(p)) return;
+    for (const line of fs.readFileSync(p, "utf8").split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+      if (!m) continue;
+      if (process.env[m[1]] === undefined) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+    }
+  } catch {
+    /* .env 不可读就跳过 */
+  }
+}
+loadDotEnv();
+
 const IS_WIN = process.platform === "win32";
 const LOG = process.env.ADB_MCP_DEBUG === "1";
 

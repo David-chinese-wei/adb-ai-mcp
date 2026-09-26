@@ -73,11 +73,15 @@ await call("screenshot", { max_width: 720 });
 await call("current_app");
 await call("logcat", { lines: 20, filter: "ActivityManager|Error" });
 
-// 7. scrcpy 投屏生命周期
-await call("scrcpy_start", { max_size: 1024, bit_rate: "4M", window_title: "adb-mcp selftest" });
-await sleep(3000);
-await call("scrcpy_status");
-await call("scrcpy_stop", { all: true });
+// 7. scrcpy 投屏生命周期（设 ADB_MCP_SELFTEST_SKIP_MIRROR=1 可跳过，避免弹窗）
+if (process.env.ADB_MCP_SELFTEST_SKIP_MIRROR === "1") {
+  console.log("\n（已跳过投屏测试）");
+} else {
+  await call("scrcpy_start", { max_size: 1024, bit_rate: "4M", window_title: "adb-mcp selftest" });
+  await sleep(3000);
+  await call("scrcpy_status");
+  await call("scrcpy_stop", { all: true });
+}
 
 console.log("\n自检结束");
 await client.close();
