@@ -35,10 +35,15 @@ function loadDotEnv() {
   try {
     const p = path.join(__dirname, ".env");
     if (!fs.existsSync(p)) return;
+    const vals = new Map(); // 先收集：同一 key 后出现的覆盖前面的，空值忽略
     for (const line of fs.readFileSync(p, "utf8").split(/\r?\n/)) {
       const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
       if (!m) continue;
-      if (process.env[m[1]] === undefined) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+      const val = m[2].replace(/^["']|["']$/g, "");
+      if (val !== "") vals.set(m[1], val);
+    }
+    for (const [k, v] of vals) {
+      if (process.env[k] === undefined) process.env[k] = v;
     }
   } catch {
     /* .env 不可读就跳过 */
