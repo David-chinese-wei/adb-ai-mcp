@@ -6,7 +6,7 @@ Let your AI **see and operate** an Android phone — an MCP server built on **AD
 > tap & swipe, app install/uninstall, screen mirroring, logcat.
 > Works over USB and WiFi (wireless debugging). Windows / macOS / Linux.
 
-中文 | [English](./README.md)
+中文 | [English](./README.md) · [Usage guide (中文)](./docs/USAGE.md)
 
 ---
 
@@ -73,6 +73,31 @@ npm run selftest
 
 This really connects to your phone and exercises env check, device list, device info,
 UI dump, screenshot, and the safety guard.
+
+## Deploying on another machine
+
+Three steps, no code changes:
+
+```bash
+# 1. deps (Node ≥ 18 + adb; scrcpy is only needed for mirroring)
+git clone https://github.com/<your-name>/adb-mcp.git
+cd adb-mcp
+npm install
+
+# 2. point it at adb / scrcpy (optional)
+cp .env.example .env        # fill ADB_EXE, SCRCPY_EXE; leave blank to auto-detect
+
+# 3. verify
+npm run selftest
+```
+
+Step 2 is a fallback, not a requirement: binaries are auto-detected from `ANDROID_HOME` /
+`ANDROID_SDK_ROOT` / common install locations / `PATH` — in testing it found the
+Android SDK's own adb with zero configuration. Only fill `.env` if adb lives somewhere unusual.
+(An `env` block in your MCP client takes priority over `.env`.)
+
+Verified end-to-end on a clean checkout: `git clone` → `npm install` → no env vars →
+device detection, `device_info`, `ui_dump`, `screenshot` and `logcat` all worked.
 
 ## Environment variables
 

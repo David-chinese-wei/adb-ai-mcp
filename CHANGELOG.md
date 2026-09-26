@@ -4,6 +4,18 @@ All notable changes to this project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+- `docs/USAGE.md`: scenario-based manual (first connection, the ui_dump → tap loop,
+  mirroring, logcat, multi-device, known limits).
+- Project-root `.env` fallback so a fresh checkout runs without touching client config.
+- `package-lock.json` is now committed for reproducible installs.
+- selftest honors `ADB_MCP_SELFTEST_SKIP_MIRROR=1` to skip the scrcpy window.
+
+### Fixed
+- `.env` values were shadowed by an earlier empty entry for the same key.
+
 ## [1.0.0] - 2026-09-26
 
 ### Added

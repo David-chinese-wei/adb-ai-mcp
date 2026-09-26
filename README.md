@@ -5,7 +5,7 @@
 > 把手机变成 AI 的一块屏幕：截图回传给模型、解析 UI 层级、点击滑动、装卸载应用、投屏到电脑、抓日志。
 > 支持 USB 与 WiFi（无线调试），支持 Windows / macOS / Linux。
 
-[English](./README_EN.md) | 中文
+[English](./README_EN.md) | 中文 · [使用手册](./docs/USAGE.md)
 
 ---
 
@@ -70,6 +70,31 @@ npm run selftest
 ```
 
 会真的连上手机跑一遍：环境体检、设备列表、设备信息、UI dump、截图、安全拦截等。
+
+## 换一台电脑部署
+
+新机器上只要三步，不需要改任何代码：
+
+```bash
+# 1. 装依赖（Node ≥ 18 + adb；scrcpy 只影响投屏功能，可后装）
+git clone https://github.com/<your-name>/adb-mcp.git
+cd adb-mcp
+npm install
+
+# 2. 告诉它 adb / scrcpy 在哪（可选）
+cp .env.example .env        # 填 ADB_EXE、SCRCPY_EXE；留空则自动探测
+
+# 3. 验证
+npm run selftest
+```
+
+**关于第 2 步**：`.env` 是兜底，不是必须的。不填时会按
+`ANDROID_HOME` / `ANDROID_SDK_ROOT` / 常见安装目录 / `PATH` 顺序自动找，
+实测能自动找到 Android SDK 自带的 adb。只有 adb 装在不常规的位置时才需要手填。
+（MCP 客户端里也可以通过 `env` 字段传，优先级高于 `.env`。）
+
+已实测过的换机流程：全新目录 `git clone` → `npm install` → 不设任何环境变量 →
+直接跑通设备识别、`device_info`、`ui_dump`、`screenshot`、`logcat`。
 
 ## 环境变量
 
