@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Startup smoke test
+        # server.js 走 stdio：给一个 EOF 的 stdin，能正常启动并退出即可
+        run: |
+          set +e
+          timeout 20 node server.js < /dev/null
+          code=$?
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then
+            echo "server 启动失败，退出码 $code"
+            exit 1
+          fi
+          echo "启动冒烟测试通过"
