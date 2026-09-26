@@ -35,7 +35,7 @@
 ### 2. 安装
 
 ```bash
-git clone https://github.com/<your-name>/adb-mcp.git
+git clone https://github.com/David-chinese-wei/adb-mcp.git
 cd adb-mcp
 npm install
 ```
@@ -77,7 +77,7 @@ npm run selftest
 
 ```bash
 # 1. 装依赖（Node ≥ 18 + adb；scrcpy 只影响投屏功能，可后装）
-git clone https://github.com/<your-name>/adb-mcp.git
+git clone https://github.com/David-chinese-wei/adb-mcp.git
 cd adb-mcp
 npm install
 

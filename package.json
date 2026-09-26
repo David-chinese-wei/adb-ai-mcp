@@ -11,8 +11,16 @@
     "start": "node server.js",
     "selftest": "node selftest.mjs"
   },
-  "keywords": ["adb", "scrcpy", "android", "mcp"],
-  "license": "ISC",
+  "keywords": ["adb", "scrcpy", "android", "mcp", "model-context-protocol", "ai-agent"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-chinese-wei/adb-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/David-chinese-wei/adb-mcp/issues"
+  },
+  "homepage": "https://github.com/David-chinese-wei/adb-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.1",
     "pngjs": "^7.0.0",
