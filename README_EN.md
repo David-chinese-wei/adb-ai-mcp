@@ -44,8 +44,8 @@ npm install -g adb-ai-mcp
 **Option B: from source (for development)**
 
 ```bash
-git clone https://github.com/David-chinese-wei/adb-mcp.git
-cd adb-mcp
+git clone https://github.com/David-chinese-wei/adb-ai-mcp.git
+cd adb-ai-mcp
 npm install
 ```
 
@@ -88,8 +88,8 @@ Three steps, no code changes:
 
 ```bash
 # 1. deps (Node ≥ 18 + adb; scrcpy is only needed for mirroring)
-git clone https://github.com/David-chinese-wei/adb-mcp.git
-cd adb-mcp
+git clone https://github.com/David-chinese-wei/adb-ai-mcp.git
+cd adb-ai-mcp
 npm install
 
 # 2. point it at adb / scrcpy (optional)

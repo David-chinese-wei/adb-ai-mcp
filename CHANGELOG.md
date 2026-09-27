@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- Renamed the GitHub repo from `adb-mcp` to `adb-ai-mcp` so it matches the npm package
+  name. Old GitHub URLs keep working via GitHub's automatic redirect.
+
 ## [1.0.0] - 2026-09-27
 
 ### Added

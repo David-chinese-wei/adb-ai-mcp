@@ -60,7 +60,7 @@ const SHOT_DIR = path.join(OUT_DIR, "screenshots");
 const REC_DIR = path.join(OUT_DIR, "recordings");
 
 function dbg(...a) {
-  if (LOG) process.stderr.write("[adb-mcp] " + a.join(" ") + "\n");
+  if (LOG) process.stderr.write("[adb-ai-mcp] " + a.join(" ") + "\n");
 }
 
 /* ==================================================================

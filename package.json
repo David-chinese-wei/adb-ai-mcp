@@ -41,12 +41,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/David-chinese-wei/adb-mcp.git"
+    "url": "git+https://github.com/David-chinese-wei/adb-ai-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/David-chinese-wei/adb-mcp/issues"
+    "url": "https://github.com/David-chinese-wei/adb-ai-mcp/issues"
   },
-  "homepage": "https://github.com/David-chinese-wei/adb-mcp#readme",
+  "homepage": "https://github.com/David-chinese-wei/adb-ai-mcp#readme",
   "publishConfig": {
     "access": "public"
   },

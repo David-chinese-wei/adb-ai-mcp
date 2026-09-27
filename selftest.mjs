@@ -1,5 +1,5 @@
 /**
- * 自检脚本：用真实 MCP 客户端连上 adb-mcp server，
+ * 自检脚本：用真实 MCP 客户端连上 adb-ai-mcp server，
  * 列举工具并逐个试跑关键能力（含 scrcpy 投屏生命周期）。
  *
  *   npm run selftest
@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SERVER = path.join(__dirname, "server.js");
 
-const client = new Client({ name: "adb-mcp-selftest", version: "1.0.0" });
+const client = new Client({ name: "adb-ai-mcp-selftest", version: "1.0.0" });
 const transport = new StdioClientTransport({
   command: process.execPath,
   args: [SERVER],
@@ -77,7 +77,7 @@ await call("logcat", { lines: 20, filter: "ActivityManager|Error" });
 if (process.env.ADB_MCP_SELFTEST_SKIP_MIRROR === "1") {
   console.log("\n（已跳过投屏测试）");
 } else {
-  await call("scrcpy_start", { max_size: 1024, bit_rate: "4M", window_title: "adb-mcp selftest" });
+  await call("scrcpy_start", { max_size: 1024, bit_rate: "4M", window_title: "adb-ai-mcp selftest" });
   await sleep(3000);
   await call("scrcpy_status");
   await call("scrcpy_stop", { all: true });

@@ -43,8 +43,8 @@ npm install -g adb-ai-mcp
 **方式 B：从源码跑（要改代码时）**
 
 ```bash
-git clone https://github.com/David-chinese-wei/adb-mcp.git
-cd adb-mcp
+git clone https://github.com/David-chinese-wei/adb-ai-mcp.git
+cd adb-ai-mcp
 npm install
 ```
 
@@ -87,8 +87,8 @@ npm run selftest
 
 ```bash
 # 1. 装依赖（Node ≥ 18 + adb；scrcpy 只影响投屏功能，可后装）
-git clone https://github.com/David-chinese-wei/adb-mcp.git
-cd adb-mcp
+git clone https://github.com/David-chinese-wei/adb-ai-mcp.git
+cd adb-ai-mcp
 npm install
 
 # 2. 告诉它 adb / scrcpy 在哪（可选）
