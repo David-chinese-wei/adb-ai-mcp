@@ -1,4 +1,4 @@
-# adb-mcp
+# adb-ai-mcp
 
 让 AI 直接「看见」并操作你的 Android 手机 —— 一个基于 **ADB + scrcpy** 的 MCP 服务器。
 
@@ -34,6 +34,14 @@
 
 ### 2. 安装
 
+**方式 A：npm 装（推荐，不用 clone）**
+
+```bash
+npm install -g adb-ai-mcp
+```
+
+**方式 B：从源码跑（要改代码时）**
+
 ```bash
 git clone https://github.com/David-chinese-wei/adb-mcp.git
 cd adb-mcp
@@ -48,8 +56,8 @@ npm install
 {
   "mcpServers": {
     "adb-scrcpy": {
-      "command": "node",
-      "args": ["<绝对路径>/adb-mcp/server.js"],
+      "command": "npx",
+      "args": ["-y", "adb-ai-mcp"],
       "env": {
         "ADB_EXE": "D:/platform-tools/adb.exe",
         "SCRCPY_EXE": "D:/scrcpy/scrcpy.exe"
@@ -73,7 +81,9 @@ npm run selftest
 
 ## 换一台电脑部署
 
-新机器上只要三步，不需要改任何代码：
+如果走 npm 安装（`npm i -g adb-ai-mcp`），下面这些全都不用做，命令直接就能跑。
+
+以下是**源码部署**的流程 —— 新机器上只要三步，不需要改任何代码：
 
 ```bash
 # 1. 装依赖（Node ≥ 18 + adb；scrcpy 只影响投屏功能，可后装）
@@ -188,9 +198,10 @@ AI 能删东西，所以命令分级拦截是内建的：
 ## 目录结构
 
 ```
-adb-mcp/
+adb-ai-mcp/
 ├── server.js          # MCP 服务主体（30 个工具）
 ├── selftest.mjs       # 自检客户端：真连设备跑一遍关键能力
+├── docs/USAGE.md      # 场景使用手册
 ├── outputs/           # 截图与录屏产物（默认，已 gitignore）
 └── package.json
 ```

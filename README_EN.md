@@ -1,4 +1,4 @@
-# adb-mcp
+# adb-ai-mcp
 
 Let your AI **see and operate** an Android phone — an MCP server built on **ADB + scrcpy**.
 
@@ -35,6 +35,14 @@ On the phone: Settings → About → tap build number 7× to unlock **Developer 
 
 ### 2. Install
 
+**Option A: via npm (recommended, no clone needed)**
+
+```bash
+npm install -g adb-ai-mcp
+```
+
+**Option B: from source (for development)**
+
 ```bash
 git clone https://github.com/David-chinese-wei/adb-mcp.git
 cd adb-mcp
@@ -49,8 +57,8 @@ npm install
 {
   "mcpServers": {
     "adb-scrcpy": {
-      "command": "node",
-      "args": ["<absolute-path>/adb-mcp/server.js"],
+      "command": "npx",
+      "args": ["-y", "adb-ai-mcp"],
       "env": {
         "ADB_EXE": "D:/platform-tools/adb.exe",
         "SCRCPY_EXE": "D:/scrcpy/scrcpy.exe"
@@ -162,9 +170,10 @@ The AI can delete things, so command guardrails are built in:
 ## Layout
 
 ```
-adb-mcp/
+adb-ai-mcp/
 ├── server.js        # MCP server: 30 tools
 ├── selftest.mjs     # self-test client that drives a real device
+├── docs/USAGE.md    # scenario handbook
 ├── outputs/         # screenshots & recordings (gitignored)
 └── package.json
 ```

@@ -1,17 +1,43 @@
 {
-  "name": "adb-mcp",
+  "name": "adb-ai-mcp",
   "version": "1.0.0",
-  "description": "MCP server for Android phone <-> PC control: adb commands, device env check, scrcpy mirroring, screenshots, UI dump",
+  "description": "MCP server that lets AI agents control Android phones from PC: adb commands, device diagnostics, scrcpy mirroring, screenshots, UI hierarchy dump",
   "type": "module",
   "main": "server.js",
   "bin": {
-    "adb-mcp": "server.js"
+    "adb-ai-mcp": "server.js"
   },
+  "files": [
+    "server.js",
+    "selftest.mjs",
+    ".env.example",
+    "docs/",
+    "README.md",
+    "README_EN.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
     "start": "node server.js",
-    "selftest": "node selftest.mjs"
+    "selftest": "node selftest.mjs",
+    "check": "node --check server.js && node --check selftest.mjs",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm run check"
   },
-  "keywords": ["adb", "scrcpy", "android", "mcp", "model-context-protocol", "ai-agent"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "adb",
+    "scrcpy",
+    "android",
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "llm",
+    "claude",
+    "phone-automation"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,6 +47,9 @@
     "url": "https://github.com/David-chinese-wei/adb-mcp/issues"
   },
   "homepage": "https://github.com/David-chinese-wei/adb-mcp#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.1",
     "pngjs": "^7.0.0",

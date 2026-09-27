@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- Published as npm package `adb-ai-mcp` (`npm i -g adb-ai-mcp`, or `npx adb-ai-mcp`).
+  Added `files` whitelist, `engines.node >= 18`, `publishConfig.access=public`,
+  and a `bin` entry so the server runs as a CLI command.
 - `docs/USAGE.md`: scenario-based manual (first connection, the ui_dump → tap loop,
   mirroring, logcat, multi-device, known limits).
 - Project-root `.env` fallback so a fresh checkout runs without touching client config.
