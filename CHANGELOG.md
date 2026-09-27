@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-27
+
 ### Added
 - Published as npm package `adb-ai-mcp` (`npm i -g adb-ai-mcp`, or `npx adb-ai-mcp`).
   Added `files` whitelist, `engines.node >= 18`, `publishConfig.access=public`,
@@ -15,13 +17,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Project-root `.env` fallback so a fresh checkout runs without touching client config.
 - `package-lock.json` is now committed for reproducible installs.
 - selftest honors `ADB_MCP_SELFTEST_SKIP_MIRROR=1` to skip the scrcpy window.
-
-### Fixed
-- `.env` values were shadowed by an earlier empty entry for the same key.
-
-## [1.0.0] - 2026-09-26
-
-### Added
 - MCP server over stdio with 30 tools for phone ⇄ PC control.
 - Environment check: adb/scrcpy detection, versions, device states, connection diagnosis.
 - Device management: list, info, default device, multi-device handling.
@@ -34,6 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - File transfer between PC and phone.
 - `selftest.mjs`: real-device self test driven through an actual MCP client.
 - Cross-platform binary detection with no hardcoded private paths.
+
+### Fixed
+- `.env` values were shadowed by an earlier empty entry for the same key.
 
 ### Notes
 - When a phone is connected both via USB and WiFi, ADB reports it as two devices.
